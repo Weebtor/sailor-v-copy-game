@@ -5,30 +5,31 @@ public class PlayerJumpingState : MovementBaseState
 
     Rigidbody2D rigidbody;
     BoxCollider2D groundCollider;
-    LayerMask groundMask;
     ContactFilter2D groundFilter;
 
     private RaycastHit2D[] groundCastBuffer = new RaycastHit2D[1];
 
-    public override void EnterState(MovementStateManager movement)
+    public override void EnterState(MovementStateManager manager)
     {
-        rigidbody = movement.myRb;
-        groundCollider = movement.groundCollider;
-        groundMask = movement.groundMask;
-        groundFilter.SetLayerMask(groundMask);
+        rigidbody = manager.myRb;
+        groundCollider = manager.groundCollider;
+        groundFilter.SetLayerMask(manager.groundMask);
+        Animator animator = manager.playerAnimation.GetComponent<Animator>();
+        animator.SetTrigger("ToJumping");
+        // rigidbody.transform.localScale = new Vector3(1, 1.1f, 1); // jumping animation
 
-        Debug.Log("hello from jumping State");
+
     }
-    public override void UpdateState(MovementStateManager movement)
+    public override void UpdateState(MovementStateManager manager)
     {
-        float verticalVelocity = rigidbody.velocity.y + (movement.GetGravityScale() * Physics2D.gravity.y * Time.deltaTime); // gravity
+        float verticalVelocity = rigidbody.velocity.y + (manager.GetGravityScale() * Physics2D.gravity.y * Time.deltaTime); // gravity
         if (!IsGrounded())
         {
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, verticalVelocity);
         }
         else
         {
-            movement.SwitchState(movement.GroundedState);
+            manager.SwitchState(manager.GroundedState);
         }
     }
 

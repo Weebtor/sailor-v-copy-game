@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class MovementBaseState
 {
-    public abstract void EnterState(MovementStateManager movement);
-    public abstract void UpdateState(MovementStateManager movement);
+    public abstract void EnterState(MovementStateManager manager);
+    public abstract void UpdateState(MovementStateManager manager);
 
 }

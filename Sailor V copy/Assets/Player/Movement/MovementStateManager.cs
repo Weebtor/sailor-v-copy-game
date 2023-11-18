@@ -7,12 +7,13 @@ public class MovementStateManager : MonoBehaviour
     public Rigidbody2D myRb;
     public BoxCollider2D groundCollider;
     public LayerMask groundMask;
-
+    public GameObject playerAnimation;
 
 
     MovementBaseState currentState;
-    public PlayerJumpingState JumpingState = new();
     public PlayerGroundedState GroundedState = new();
+    public PlayerCrouchingState CrouchingState = new();
+    public PlayerJumpingState JumpingState = new();
 
 
     // variables
@@ -23,7 +24,7 @@ public class MovementStateManager : MonoBehaviour
 
     void Start()
     {
-        currentState = JumpingState;
+        currentState = GroundedState;
         currentState.EnterState(this);
     }
 
