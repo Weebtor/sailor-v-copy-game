@@ -12,6 +12,7 @@ public class PlayerGroundedState : MovementBaseState
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
         groundCollider = manager.groundCollider;
         Animator animator = manager.playerAnimation.GetComponent<Animator>();
+
         animator.SetTrigger(PlayerAnimations.Grounded);
 
 
@@ -31,11 +32,7 @@ public class PlayerGroundedState : MovementBaseState
         {
             manager.SwitchState(manager.CrouchingState);
         }
-        // else if (Input.GetKeyDown(KeyCode.A)) // flip
-        // {
-        //     var x = manager.transform.root;
-        //     ObjectUtilities.FlipAxisX(x);
-        // }
+
     }
 
     void HandleGroundSnap(MovementStateManager manager)
@@ -44,11 +41,9 @@ public class PlayerGroundedState : MovementBaseState
         int hit = groundCollider.Cast(Vector2.down, groundFilter, groundCastBuffer, 0f);
         if (hit > 0)
         {
-            Vector2 surfacePosition = Physics2D.ClosestPoint(manager.transform.position + Vector3.up, groundCastBuffer[0].collider);
+            Vector2 surfacePosition = Physics2D.ClosestPoint(manager.transform.position, groundCastBuffer[0].collider);
             rigidbody.transform.position = surfacePosition;
         }
-
-
     }
 
 }
