@@ -7,14 +7,18 @@ public class MovementStateManager : MonoBehaviour
     public Rigidbody2D myRb;
     public BoxCollider2D groundCollider;
     public LayerMask groundMask;
-    public GameObject playerAnimation;
-
+    // public GameObject playerAnimation;
+    [HideInInspector] public Transform rootTransform;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public PlayerAnimationScript animationHandler;
 
     MovementBaseState currentState;
-    public PlayerGroundedState GroundedState = new();
+
+    public PlayerIdleState IdleState = new();
     public PlayerCrouchingState CrouchingState = new();
     public PlayerJumpingState JumpingState = new();
-    public PlayerDeadState DeadState = new();
+    public PlayerDyingState DeadState = new();
+    public PlayerFallingState FallingState = new();
 
 
     // variables
@@ -23,11 +27,14 @@ public class MovementStateManager : MonoBehaviour
 
     void Start()
     {
-        currentState = GroundedState;
+        rootTransform = transform.root.GetComponent<Transform>();
+        animator = transform.root.GetComponentInChildren<Animator>();
+        animationHandler = transform.root.GetComponentInChildren<PlayerAnimationScript>();
+
+        currentState = IdleState;
         currentState.EnterState(this);
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentState.UpdateState(this);
@@ -39,8 +46,16 @@ public class MovementStateManager : MonoBehaviour
         state.EnterState(this);
     }
 
+
     public MovementBaseState GetCurrentState()
     {
         return currentState;
     }
+
+    [ContextMenu("KillPlayer")]
+    public void KillPlayer()
+    {
+        SwitchState(this.DeadState);
+    }
+
 }

@@ -2,30 +2,20 @@ using UnityEngine;
 
 public class PlayerCrouchingState : MovementBaseState
 {
-    Rigidbody2D rigidbody;
 
     public override void EnterState(MovementStateManager manager)
     {
-        rigidbody = manager.myRb;
-        Animator animator = manager.playerAnimation.GetComponent<Animator>();
-        animator.SetTrigger(PlayerAnimations.Crouch);
-
-        // rigidbody.transform.localScale = new Vector3(1, 0.5f, 1); // crouch animation
+        Debug.Log(PlayerAnimations.CROUCHING);
+        manager.animationHandler.SwitchAnimation(PlayerAnimations.CROUCHING);
     }
+
+
 
     public override void UpdateState(MovementStateManager manager)
     {
-
-        if (UserInputScript.instance.CrouchButtonHold)
+        if (UserInputScript.instance.CrouchButtonHold == false)
         {
-            Animator animator = manager.playerAnimation.GetComponent<Animator>();
+            manager.SwitchState(manager.IdleState);
         }
-        else
-        {
-            manager.SwitchState(manager.GroundedState);
-        }
-
-
     }
-
 }

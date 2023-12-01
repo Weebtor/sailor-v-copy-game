@@ -6,7 +6,6 @@ public class EnemyBase : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] float speed = 1;
     [SerializeField] int maxHp = 10;
     [SerializeField] int currentHp;
     [SerializeField] int attackPoints = 1;
