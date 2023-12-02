@@ -12,7 +12,7 @@ public class PlayerIdleState : MovementBaseState
         groundCollider = manager.groundCollider;
         HandleGroundSnap(manager);
 
-        manager.animationHandler.SwitchAnimation(PlayerAnimations.IDLE);
+        manager.animationHandler.SwitchState(PlayerAnimation.IDLE);
     }
     public override void UpdateState(MovementStateManager manager)
     {

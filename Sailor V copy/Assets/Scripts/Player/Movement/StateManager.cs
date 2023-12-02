@@ -10,7 +10,7 @@ public class MovementStateManager : MonoBehaviour
     // public GameObject playerAnimation;
     [HideInInspector] public Transform rootTransform;
     [HideInInspector] public Animator animator;
-    [HideInInspector] public PlayerAnimationScript animationHandler;
+    [HideInInspector] public PlayerAnimationHandler animationHandler;
 
     MovementBaseState currentState;
 
@@ -29,7 +29,7 @@ public class MovementStateManager : MonoBehaviour
     {
         rootTransform = transform.root.GetComponent<Transform>();
         animator = transform.root.GetComponentInChildren<Animator>();
-        animationHandler = transform.root.GetComponentInChildren<PlayerAnimationScript>();
+        animationHandler = transform.root.GetComponentInChildren<PlayerAnimationHandler>();
 
         currentState = IdleState;
         currentState.EnterState(this);

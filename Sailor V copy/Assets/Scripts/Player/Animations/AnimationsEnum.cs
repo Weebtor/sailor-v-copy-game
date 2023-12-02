@@ -1,4 +1,4 @@
-public static class PlayerAnimations
+public static class PlayerAnimation
 {
     public const string IDLE = "Player_Idle";
     public const string CROUCHING = "Player_Crouching";
@@ -12,4 +12,10 @@ public static class PlayerActions
 {
     public const string IS_SHOOTING = "IsShooting";
 
+}
+
+public enum PlayerAnimationLayer
+{
+    Normal,
+    GunWeapon
 }

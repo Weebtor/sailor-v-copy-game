@@ -15,7 +15,7 @@ public class PlayerFallingState : MovementBaseState
         rigidbody = manager.myRb;
         groundCollider = manager.groundCollider;
         groundFilter.SetLayerMask(manager.groundMask);
-        manager.animationHandler.SwitchAnimation(PlayerAnimations.FALLING);
+        manager.animationHandler.SwitchState(PlayerAnimation.FALLING);
     }
 
     public override void UpdateState(MovementStateManager manager)

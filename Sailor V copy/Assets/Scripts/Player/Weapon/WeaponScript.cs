@@ -16,12 +16,12 @@ public class WeaponScript : MonoBehaviour
 
     MovementStateManager playerState;
     Animator playerAnimator;
-    PlayerAnimationScript playerAnimationScript;
+    PlayerAnimationHandler playerAnimationHandler;
 
     void Start()
     {
         playerState = transform.root.GetComponentInChildren<MovementStateManager>();
-        playerAnimationScript = transform.root.GetComponentInChildren<PlayerAnimationScript>();
+        playerAnimationHandler = transform.root.GetComponentInChildren<PlayerAnimationHandler>();
         playerAnimator = transform.root.GetComponentInChildren<Animator>();
     }
 
@@ -37,8 +37,7 @@ public class WeaponScript : MonoBehaviour
         if (UserInputScript.instance.ShootJustPressed && weaponCooldown.IsCoolingDown == false)
         {
             weaponCooldown.StartCooldown();
-            playerAnimator.SetBool(PlayerActions.IS_SHOOTING, true);
-            playerAnimationScript.InvokeReturnAnimation();
+            playerAnimationHandler.HandleShootAnimation();
             SpawnBullet();
         }
     }

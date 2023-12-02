@@ -14,7 +14,7 @@ public class PlayerDyingState : MovementBaseState
         rigidbody.velocity = new Vector2(0, 0); // stop
         groundLayer = manager.groundMask;
 
-        manager.animationHandler.SwitchAnimation(PlayerAnimations.DYING);
+        manager.animationHandler.SwitchState(PlayerAnimation.DYING);
         groundSurface = GetGroundSurface();
 
 

@@ -5,8 +5,7 @@ public class PlayerCrouchingState : MovementBaseState
 
     public override void EnterState(MovementStateManager manager)
     {
-        Debug.Log(PlayerAnimations.CROUCHING);
-        manager.animationHandler.SwitchAnimation(PlayerAnimations.CROUCHING);
+        manager.animationHandler.SwitchState(PlayerAnimation.CROUCHING);
     }
 
 
