@@ -10,14 +10,15 @@ public class PlayerDyingState : MovementBaseState
 
     public override void EnterState(MovementStateManager manager)
     {
+
         rigidbody = manager.myRb;
+        playerTransform = manager.rootTransform;
         rigidbody.velocity = new Vector2(0, 0); // stop
         groundLayer = manager.groundMask;
 
         manager.animationHandler.SwitchState(PlayerAnimation.DYING);
         groundSurface = GetGroundSurface();
-
-
+        Debug.Log($"{groundSurface}");
     }
 
     public override void UpdateState(MovementStateManager manager) { }
