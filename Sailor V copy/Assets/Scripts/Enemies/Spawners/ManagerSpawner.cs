@@ -10,12 +10,6 @@ public class EnemiesGeneratorManager : MonoBehaviour
     {
         spawnersArray = GetComponentsInChildren<BaseSpawner>();
 
-        Debug.Log(spawnersArray.Length);
-        foreach (var child in spawnersArray)
-        {
-            child.SayHello();
-        }
-
     }
     [ContextMenu("Generate random enemy")]
     void GenerateRandomEnemy()
@@ -24,4 +18,13 @@ public class EnemiesGeneratorManager : MonoBehaviour
         var spawnerScript = spawnersArray[indexOption];
         spawnerScript.SpawnEnemy();
     }
+    // IEnumerator TestGenerating()
+    // {
+    //     for (int i = 0; i < 10; i++)
+    //     {
+    //         Debug.Log("spawn bird");
+    //         SpawnBird();
+    //         yield return new WaitForSeconds(2.0f);
+    //     }
+    // }
 }
