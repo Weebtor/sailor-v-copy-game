@@ -10,12 +10,12 @@ public static class PlayerAnimationName
 
 public static class PlayerActions
 {
-    public const string IS_SHOOTING = "IsShooting";
+    public const string SHOOT = "Shoot";
 
 }
 
 public enum PlayerAnimationLayer
 {
     Normal,
-    GunWeapon
+    Aiming
 }

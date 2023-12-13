@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
+
+enum ImageEnum
+{
+    Normal,
+    Dead,
+    Win,
+}
 public class HealthController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject[] hearts;
+    [SerializeField] Sprite[] sprites;
     [SerializeField] int currentHearts, maxHearts;
 
     void Start()
@@ -24,7 +33,8 @@ public class HealthController : MonoBehaviour
         {
             if (currentHearts <= 0) return;
 
-            hearts[currentHearts - 1].SetActive(false);
+            // hearts[currentHearts - 1].SetActive(false);
+            hearts[currentHearts - 1].GetComponent<Image>().sprite = sprites[(int)ImageEnum.Dead];
             currentHearts -= 1;
         }
     }

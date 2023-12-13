@@ -15,14 +15,14 @@ public class WeaponScript : MonoBehaviour
     [SerializeField] CoolDown weaponCooldown;
 
     PlayerStateManager playerState;
-    Animator playerAnimator;
+    // Animator playerAnimator;
     PlayerAnimationController playerAnimationHandler;
 
     void Start()
     {
         playerState = transform.root.GetComponentInChildren<PlayerStateManager>();
         playerAnimationHandler = transform.root.GetComponentInChildren<PlayerAnimationController>();
-        playerAnimator = transform.root.GetComponentInChildren<Animator>();
+        // playerAnimator = transform.root.GetComponentInChildren<Animator>();
     }
 
     void Update()

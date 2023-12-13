@@ -32,10 +32,9 @@ public class PlayerAnimationController : MonoBehaviour
         currentLayer = newLayer;
 
     }
-    // 
     public void SwitchState(string newAnimation)
     {
-        if (currentAnimation == newAnimation) return; // Guard
+        if (currentAnimation == newAnimation) return;
 
         animator.Play(newAnimation);
         currentAnimation = newAnimation;
@@ -47,8 +46,11 @@ public class PlayerAnimationController : MonoBehaviour
     }
     public void HandleShootAnimation()
     {
-        SwitchLayer(PlayerAnimationLayer.GunWeapon);
+        SwitchLayer(PlayerAnimationLayer.Aiming);
+        animator.ResetTrigger(PlayerActions.SHOOT);
+        animator.SetTrigger(PlayerActions.SHOOT);
         InvokeNormalAnimation();
+
     }
 
     // return to normal animation from aiming

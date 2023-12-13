@@ -52,10 +52,10 @@ public class PlayerStateManager : MonoBehaviour
         return currentState;
     }
 
-    [ContextMenu("KillPlayer")]
-    public void KillPlayer()
-    {
-        SwitchState(this.DeadState);
-    }
+    // [ContextMenu("KillPlayer")]
+    // public void KillPlayer()
+    // {
+    //     SwitchState(this.DeadState);
+    // }
 
 }

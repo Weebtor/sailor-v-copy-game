@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5092070868261648771}
   - component: {fileID: 5705299475669476433}
   m_Layer: 0
-  m_Name: BirdSpawner
+  m_Name: NormalBirdSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
