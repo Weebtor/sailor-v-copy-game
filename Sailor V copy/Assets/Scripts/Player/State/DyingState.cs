@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerDyingState : MovementBaseState
+public class PlayerDyingState : BaseState
 {
     Rigidbody2D rigidbody;
     LayerMask groundLayer;
     Vector2 groundSurface;
     Transform playerTransform;
 
-    public override void EnterState(MovementStateManager manager)
+    public override void EnterState(PlayerStateManager manager)
     {
 
         rigidbody = manager.myRb;
@@ -16,12 +16,11 @@ public class PlayerDyingState : MovementBaseState
         rigidbody.velocity = new Vector2(0, 0); // stop
         groundLayer = manager.groundMask;
 
-        manager.animationHandler.SwitchState(PlayerAnimation.DYING);
+        manager.animationHandler.SwitchState(PlayerAnimationName.DYING);
         groundSurface = GetGroundSurface();
-        Debug.Log($"{groundSurface}");
     }
 
-    public override void UpdateState(MovementStateManager manager) { }
+    public override void UpdateState(PlayerStateManager manager) { }
 
 
     Vector2 GetGroundSurface()

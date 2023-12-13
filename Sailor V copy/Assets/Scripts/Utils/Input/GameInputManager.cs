@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class UserInputScript : MonoBehaviour
+public class GameInputManager : MonoBehaviour
 {
-    public static UserInputScript instance;
+    public static GameInputManager instance;
     // Start is called before the first frame update
     public bool JumpJustPressed { get; private set; }
     public bool ShootJustPressed { get; private set; }

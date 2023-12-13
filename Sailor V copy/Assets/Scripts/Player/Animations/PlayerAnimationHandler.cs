@@ -1,23 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerAnimationHandler : MonoBehaviour
+public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] float returnToNormalAnimationTime = 1f;
 
-    MovementStateManager stateManager;
+    [SerializeField] Color flashColor = Color.white;
+    [SerializeField] float flashTime = 0.125f;
+
+    Material material;
+    PlayerStateManager stateManager;
     Animator animator;
     PlayerAnimationLayer currentLayer = PlayerAnimationLayer.Normal;
-    string currentAnimation = PlayerAnimation.IDLE;
+    string currentAnimation = PlayerAnimationName.IDLE;
 
     void Start()
     {
         var parent = transform.root;
-        stateManager = parent.GetComponentInChildren<MovementStateManager>();
+        stateManager = parent.GetComponentInChildren<PlayerStateManager>();
         animator = GetComponent<Animator>();
-        Debug.Log(animator.GetLayerName(0));
-
+        material = GetComponent<SpriteRenderer>().material;
+        material.SetColor("_FlashColor", flashColor);
     }
     public void SwitchLayer(PlayerAnimationLayer newLayer)
     {
@@ -28,6 +32,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         currentLayer = newLayer;
 
     }
+    // 
     public void SwitchState(string newAnimation)
     {
         if (currentAnimation == newAnimation) return; // Guard
@@ -46,6 +51,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         InvokeNormalAnimation();
     }
 
+    // return to normal animation from aiming
     public void InvokeNormalAnimation()
     {
         CancelInvoke(nameof(StartNormalAnimation));
@@ -56,4 +62,21 @@ public class PlayerAnimationHandler : MonoBehaviour
         SwitchLayer(PlayerAnimationLayer.Normal);
     }
 
+    // flash damage
+    public void TakeDamageAnimation()
+    {
+        StartCoroutine(DagemeFlash());
+    }
+    IEnumerator DagemeFlash()
+    {
+        material.SetFloat("_FlashValue", 1);
+        yield return new WaitForSeconds(flashTime);
+        material.SetFloat("_FlashValue", 0);
+        yield return new WaitForSeconds(flashTime);
+        material.SetFloat("_FlashValue", 1);
+        yield return new WaitForSeconds(flashTime);
+        material.SetFloat("_FlashValue", 0);
+        yield return new WaitForSeconds(flashTime);
+
+    }
 }

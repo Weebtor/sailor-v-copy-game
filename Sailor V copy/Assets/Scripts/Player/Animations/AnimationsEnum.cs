@@ -1,4 +1,4 @@
-public static class PlayerAnimation
+public static class PlayerAnimationName
 {
     public const string IDLE = "Player_Idle";
     public const string CROUCHING = "Player_Crouching";

@@ -6,7 +6,6 @@ public class EnemySpawnerScript : BaseSpawner
 {
     // Start is called before the first frame update
     [SerializeField] float heightOffset = 10f;
-    [SerializeField] float sideOffset = 1f;
 
 
     // void Start()
@@ -42,22 +41,13 @@ public class EnemySpawnerScript : BaseSpawner
     void OnDrawGizmos()
     {
 
-        // cambiar a utilsGizmoBox
         Vector3 center = transform.position;
-        Vector3 rotationVector = transform.right.normalized;
-        Quaternion rotation = Quaternion.LookRotation(rotationVector);
+        Vector3 normalUp = transform.up.normalized;
 
-
-
-        Vector3 topLeft = center + rotation * new Vector3(-sideOffset, heightOffset);
-        Vector3 topRight = center + rotation * new Vector3(sideOffset, heightOffset);
-        Vector3 bottomLeft = center + rotation * new Vector3(-sideOffset, -heightOffset);
-        Vector3 bottomRight = center + rotation * new Vector3(sideOffset, -heightOffset);
-
+        Vector3 point1 = center + (normalUp * heightOffset);
+        Vector3 point2 = center - (normalUp * heightOffset);
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(topLeft, topRight);
-        Gizmos.DrawLine(topRight, bottomRight);
-        Gizmos.DrawLine(bottomRight, bottomLeft);
-        Gizmos.DrawLine(bottomLeft, topLeft);
+        Gizmos.DrawLine(point1, point2);
+
     }
 }
