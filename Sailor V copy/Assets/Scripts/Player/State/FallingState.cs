@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerFallingState : MovementBaseState
+public class PlayerFallingState : BaseState
 {
     Rigidbody2D rigidbody;
     BoxCollider2D groundCollider;
@@ -10,15 +10,15 @@ public class PlayerFallingState : MovementBaseState
 
     private RaycastHit2D[] groundCastBuffer = new RaycastHit2D[1];
 
-    public override void EnterState(MovementStateManager manager)
+    public override void EnterState(PlayerStateManager manager)
     {
         rigidbody = manager.myRb;
         groundCollider = manager.groundCollider;
         groundFilter.SetLayerMask(manager.groundMask);
-        manager.animationHandler.SwitchState(PlayerAnimation.FALLING);
+        manager.animationHandler.SwitchState(PlayerAnimationName.FALLING);
     }
 
-    public override void UpdateState(MovementStateManager manager)
+    public override void UpdateState(PlayerStateManager manager)
     {
         float verticalVelocity = rigidbody.velocity.y + (manager.GravityScale * Physics2D.gravity.y * Time.deltaTime);
 

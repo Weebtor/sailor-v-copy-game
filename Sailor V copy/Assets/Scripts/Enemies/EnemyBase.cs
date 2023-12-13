@@ -6,7 +6,7 @@ public class EnemyBase : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] int maxHp = 10;
+    [SerializeField] int maxHp = 1;
     [SerializeField] int currentHp;
     [SerializeField] int attackPoints = 1;
     protected virtual void Start()
@@ -14,12 +14,7 @@ public class EnemyBase : MonoBehaviour
         currentHp = maxHp;
     }
 
-    public EnemyBase()
-    {
-        currentHp = maxHp;
-    }
 
-    public virtual void Move() { }
     public void Damage(int damagePoints)
     {
         currentHp -= damagePoints;
@@ -34,14 +29,12 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitbox)
     {
-        Debug.Log(hitbox.name);
-        var player = hitbox.transform.root.GetComponent<PlayerScript>();
+        Player player = hitbox.transform.root.GetComponent<Player>();
         if (player)
         {
-            Debug.Log("inflict damage");
-            player.Damage(attackPoints);
+            player.TakeDamage(attackPoints);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
 
     }
 

@@ -14,14 +14,14 @@ public class WeaponScript : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] CoolDown weaponCooldown;
 
-    MovementStateManager playerState;
+    PlayerStateManager playerState;
     Animator playerAnimator;
-    PlayerAnimationHandler playerAnimationHandler;
+    PlayerAnimationController playerAnimationHandler;
 
     void Start()
     {
-        playerState = transform.root.GetComponentInChildren<MovementStateManager>();
-        playerAnimationHandler = transform.root.GetComponentInChildren<PlayerAnimationHandler>();
+        playerState = transform.root.GetComponentInChildren<PlayerStateManager>();
+        playerAnimationHandler = transform.root.GetComponentInChildren<PlayerAnimationController>();
         playerAnimator = transform.root.GetComponentInChildren<Animator>();
     }
 
@@ -34,7 +34,7 @@ public class WeaponScript : MonoBehaviour
     void HandleShoot()
     {
 
-        if (UserInputScript.instance.ShootJustPressed && weaponCooldown.IsCoolingDown == false)
+        if (GameInputManager.instance.ShootJustPressed && weaponCooldown.IsCoolingDown == false)
         {
             weaponCooldown.StartCooldown();
             playerAnimationHandler.HandleShootAnimation();

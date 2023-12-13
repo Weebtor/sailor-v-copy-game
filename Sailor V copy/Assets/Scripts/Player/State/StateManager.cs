@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementStateManager : MonoBehaviour
+public class PlayerStateManager : MonoBehaviour
 {
     public Rigidbody2D myRb;
     public BoxCollider2D groundCollider;
@@ -10,9 +10,9 @@ public class MovementStateManager : MonoBehaviour
     // public GameObject playerAnimation;
     [HideInInspector] public Transform rootTransform;
     [HideInInspector] public Animator animator;
-    [HideInInspector] public PlayerAnimationHandler animationHandler;
+    [HideInInspector] public PlayerAnimationController animationHandler;
 
-    MovementBaseState currentState;
+    BaseState currentState;
 
     public PlayerIdleState IdleState = new();
     public PlayerCrouchingState CrouchingState = new();
@@ -29,7 +29,7 @@ public class MovementStateManager : MonoBehaviour
     {
         rootTransform = transform.root.GetComponent<Transform>();
         animator = transform.root.GetComponentInChildren<Animator>();
-        animationHandler = transform.root.GetComponentInChildren<PlayerAnimationHandler>();
+        animationHandler = transform.root.GetComponentInChildren<PlayerAnimationController>();
 
         currentState = IdleState;
         currentState.EnterState(this);
@@ -40,14 +40,14 @@ public class MovementStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void SwitchState(MovementBaseState state)
+    public void SwitchState(BaseState state)
     {
         currentState = state;
         state.EnterState(this);
     }
 
 
-    public MovementBaseState GetCurrentState()
+    public BaseState GetCurrentState()
     {
         return currentState;
     }

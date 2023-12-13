@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartUISystem : MonoBehaviour
+public class HealthController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject[] hearts;
@@ -14,9 +14,13 @@ public class HeartUISystem : MonoBehaviour
     }
 
 
-    void TakeDamage(int damage = 1)
+    public void PlayerTakeDamage(Component sender, object data)
     {
-        for (int i = 0; i < damage; i++)
+        if (data is not int) return;
+
+        int value = (int)data;
+
+        for (int i = 0; i < value; i++)
         {
             if (currentHearts <= 0) return;
 
@@ -25,7 +29,7 @@ public class HeartUISystem : MonoBehaviour
         }
     }
 
-    void RecoverDamage(int recoverPoints = 1)
+    public void RecoverDamage(int recoverPoints = 1)
     {
 
         for (int i = 0; i < recoverPoints; i++)
@@ -36,9 +40,5 @@ public class HeartUISystem : MonoBehaviour
             hearts[currentHearts - 1].SetActive(true);
         }
     }
-    [ContextMenu("Test damage")]
-    void TestDamage() { TakeDamage(1); }
 
-    [ContextMenu("Recover damage")]
-    void TestRecover() { RecoverDamage(1); }
 }
