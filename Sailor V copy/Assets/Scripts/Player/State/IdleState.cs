@@ -34,7 +34,7 @@ public class PlayerIdleState : BaseState
         int hit = groundCollider.Cast(Vector2.down, groundFilter, groundCastBuffer, 0f);
         if (hit > 0)
         {
-            Vector2 surfacePosition = Physics2D.ClosestPoint(manager.transform.position, groundCastBuffer[0].collider);
+            Vector2 surfacePosition = Physics2D.ClosestPoint(manager.transform.position + new Vector3(0, 1), groundCastBuffer[0].collider);
             rigidbody.transform.position = surfacePosition;
         }
     }

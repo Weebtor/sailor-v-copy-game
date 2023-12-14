@@ -22,7 +22,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        var enemy = hit.GetComponent<EnemyBase>();
+        var enemy = hit.transform.root.GetComponent<EnemyBase>();
         if (enemy)
         {
             enemy.Damage(damage);

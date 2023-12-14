@@ -29,6 +29,9 @@ public class PlayerDyingState : BaseState
         return Physics2D.ClosestPoint(playerTransform.position, hit.collider);
     }
 
-    public void HandleDeadPosition() { playerTransform.position = groundSurface; }
+    public void SetPositionOnKO()
+    {
+        playerTransform.position = groundSurface;
+    }
 
 }

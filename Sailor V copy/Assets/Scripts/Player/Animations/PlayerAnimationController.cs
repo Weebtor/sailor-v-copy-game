@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerAnimationController : MonoBehaviour
 {
+    [Header("Animation boring")]
     [SerializeField] float returnToNormalAnimationTime = 1f;
 
+    [Header("Flash Damage settings")]
     [SerializeField] Color flashColor = Color.white;
     [SerializeField] float flashTime = 0.125f;
 
@@ -40,9 +42,9 @@ public class PlayerAnimationController : MonoBehaviour
         currentAnimation = newAnimation;
     }
 
-    public void HandleDeadPosition()
+    public void SetPostionToGround()
     {
-        stateManager.DeadState.HandleDeadPosition();
+        stateManager.DeadState.SetPositionOnKO();
     }
     public void HandleShootAnimation()
     {

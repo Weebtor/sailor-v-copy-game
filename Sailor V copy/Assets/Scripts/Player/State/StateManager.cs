@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
+    [Header("Components Required")]
     public Rigidbody2D myRb;
     public BoxCollider2D groundCollider;
     public LayerMask groundMask;
@@ -12,8 +13,8 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerAnimationController animationHandler;
 
-    BaseState currentState;
 
+    BaseState currentState;
     public PlayerIdleState IdleState = new();
     public PlayerCrouchingState CrouchingState = new();
     public PlayerJumpingState JumpingState = new();
@@ -22,6 +23,7 @@ public class PlayerStateManager : MonoBehaviour
 
 
     // variables
+    [field: Header("Movement settings")]
     [field: SerializeField] public float GravityScale { get; private set; } = 1f;
     [field: SerializeField] public float JumpHeight { get; private set; } = 5f;
 
@@ -52,10 +54,10 @@ public class PlayerStateManager : MonoBehaviour
         return currentState;
     }
 
-    // [ContextMenu("KillPlayer")]
-    // public void KillPlayer()
-    // {
-    //     SwitchState(this.DeadState);
-    // }
+    [ContextMenu("KillPlayer")]
+    public void KillPlayer()
+    {
+        SwitchState(this.DeadState);
+    }
 
 }

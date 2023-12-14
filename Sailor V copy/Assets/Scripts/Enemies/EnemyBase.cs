@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    [Header("Stats options")]
     [SerializeField] int maxHp = 1;
     [SerializeField] int currentHp;
     [SerializeField] int attackPoints = 1;
@@ -30,6 +30,7 @@ public class EnemyBase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D hitbox)
     {
         Player player = hitbox.transform.root.GetComponent<Player>();
+
         if (player)
         {
             player.TakeDamage(attackPoints);
