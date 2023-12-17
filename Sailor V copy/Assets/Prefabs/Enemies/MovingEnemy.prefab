@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 1
-  currentHp: 0
   attackPoints: 1
+  OnEnemyDestruction: {fileID: 11400000, guid: 36792f807661cc24896dbea3eeecad23, type: 2}
   xSpeed: 1
   yAmplitude: 1
   frequency: 1

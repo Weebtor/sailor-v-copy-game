@@ -52,6 +52,13 @@ public class GameInputManager : MonoBehaviour
         CrouchButtonDown = _crouchAction.WasPressedThisFrame();
         CrouchButtonHold = _crouchAction.IsPressed();
         MenuOpenCloseInput = _menuOpenCloseAction.WasPressedThisFrame();
+    }
 
+    public void DisableActions()
+    {
+        _jumpAction.Disable();
+        _crouchAction.Disable();
+        _shootAction.Disable();
+        // _menuOpenCloseAction.Disable();
     }
 }

@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 3
-  currentHp: 1
   OnPlayerTakeDamage: {fileID: 11400000, guid: d80f15d8e87371b4a9c43f9c4a21535d, type: 2}
 --- !u!1 &3130413601812271167
 GameObject:
@@ -490,6 +489,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  OnPlayerStateChange: {fileID: 11400000, guid: 85d03e7409c38524a87ded2a8fb9250e, type: 2}
   rootTransform: {fileID: 0}
   animator: {fileID: 0}
   animationHandler: {fileID: 0}

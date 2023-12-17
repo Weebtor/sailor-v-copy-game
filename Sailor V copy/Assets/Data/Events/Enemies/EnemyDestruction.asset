@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71dc6d81c97f7ad41b82cd84551cb244, type: 3}
-  m_Name: LevelComplete
+  m_Name: EnemyDestruction
   m_EditorClassIdentifier: 
   listeners: []

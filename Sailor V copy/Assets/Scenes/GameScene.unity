@@ -251,7 +251,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214952123}
   m_CullTransparentMesh: 1
---- !u!1 &271643923
+--- !u!1 &501243695
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,29 +259,33 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 271643924}
-  m_Layer: 0
-  m_Name: GameLogic
+  - component: {fileID: 501243696}
+  m_Layer: 5
+  m_Name: WinScreenController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &271643924
-Transform:
+--- !u!224 &501243696
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271643923}
-  serializedVersion: 2
+  m_GameObject: {fileID: 501243695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95132697, y: 0.05595367, z: 0.09087947}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 661407793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &661407789
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +380,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 501243696}
   - {fileID: 1342326980}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -508,6 +513,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ac6d740a3eb8f468ef474704ec9724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1102664586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6986175995371497930, guid: bf0f25535af642f4f9a8b696f3cf7ffb, type: 3}
+  m_PrefabInstance: {fileID: 679210753449362144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79a35e7f274b714d916a5c1329258ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1207801964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5224848734850976173, guid: 1897e9d85af8fc04a9cbd7a052538b3d, type: 3}
@@ -581,11 +597,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7036481f8ae71844830a3a2199f97de, type: 3}
---- !u!1 &1213540130 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2635501195591494595, guid: bf0f25535af642f4f9a8b696f3cf7ffb, type: 3}
-  m_PrefabInstance: {fileID: 679210753449362144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1342326979
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,8 +697,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1384546059}
   - component: {fileID: 1384546060}
+  - component: {fileID: 1384546062}
+  - component: {fileID: 1384546061}
   m_Layer: 0
-  m_Name: GameLogicManager
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -720,7 +733,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062b02c074e381b4f8858e5c13922486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 1213540130}
+  playerStateManager: {fileID: 1102664586}
+--- !u!114 &1384546061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384546058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84d2d46062861b418722ea01a4db10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 734cfba5559880246a1810dc34a2c856, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1384546060}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: OnListenerStageCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1384546062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384546058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84d2d46062861b418722ea01a4db10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 36792f807661cc24896dbea3eeecad23, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1384546060}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: OnListenerEnemyDestroyed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1535605821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103551817}
   - component: {fileID: 2103551818}
+  - component: {fileID: 2103551819}
   m_Layer: 0
   m_Name: EnemiesSpawnController
   m_TagString: Untagged
@@ -1187,8 +1257,38 @@ MonoBehaviour:
   spawnersArray:
   - {fileID: 961054714}
   - {fileID: 1207801965}
-  enemiesPerWave: 5
   spawnColldown: 5
+  enemiesPerWave: 5
+  enemiesRemaining: 0
+  stageCompleted: {fileID: 11400000, guid: 734cfba5559880246a1810dc34a2c856, type: 2}
+--- !u!114 &2103551819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103551816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84d2d46062861b418722ea01a4db10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 36792f807661cc24896dbea3eeecad23, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2103551818}
+        m_TargetAssemblyTypeName: EnemiesWaveController, Assembly-CSharp
+        m_MethodName: OnListenerEnemyDestroyed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &679210753449362144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1309,9 +1409,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1848977567}
   - {fileID: 1384546059}
-  - {fileID: 661407793}
   - {fileID: 1546238393}
-  - {fileID: 271643924}
+  - {fileID: 661407793}
   - {fileID: 679210753449362144}
   - {fileID: 2103551817}
   - {fileID: 674275843}

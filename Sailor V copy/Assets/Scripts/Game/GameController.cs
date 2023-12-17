@@ -1,33 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance;
+    [Header("Scene components")]
+    [SerializeField] PlayerStateManager playerStateManager;
+    [Header("Stage condition")]
+    [System.NonSerialized] bool stageCompleted = false;
+    [Header("Score")]
+    [System.NonSerialized] int score = 0;
 
-    [SerializeField] GameObject playerObject;
-    Player player;
-    public int Score { get; private set; }
-    public int Hearts { get; private set; }
 
-    void Start()
+
+    // public void ResetGame()
+    // {
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    // }
+
+
+
+    void StageCompleted()
     {
-        player = playerObject.GetComponent<Player>();
+        stageCompleted = true;
+        GameInputManager.instance.DisableActions();
+        StartCoroutine(TriggerStageCompletedScreen());
+    }
+    IEnumerator TriggerStageCompletedScreen()
+    {
+        Debug.Log("Check TriggerWinScreen");
+        yield return new WaitForSeconds(2f);
+        playerStateManager.SwitchState(playerStateManager.WinState);
+        Debug.Log("<color=green>Trigger win screen</color>");
     }
 
-    public void ResetGame()
+
+    public void IncreaseScore(int value = 1)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        score += value;
+        Debug.Log($"<color=yellow>Score {score}</color>");
 
     }
-    public void IncrementScore() { Score++; }
-    public void DecreaseHearts() { Hearts--; }
-    public void RecoverHealth() { }
-    public void OnPlayerDead()
+
+    // EVENTS
+    public void OnListenerStageCompleted(Component sender, object data)
     {
-        Debug.Log("On player dead");
+        StageCompleted();
     }
+    public void OnListenerEnemyDestroyed(Component sender, object data)
+    {
+        var enemy = (EnemyBase)sender;
+        IncreaseScore(enemy.scorePoints);
+    }
+
 }

@@ -5,6 +5,7 @@ public static class PlayerAnimationName
     public const string JUMPING = "Player_Jumping";
     public const string FALLING = "Player_Falling";
     public const string DYING = "Player_Dying";
+    public const string WIN = "Player_Win";
 
 }
 

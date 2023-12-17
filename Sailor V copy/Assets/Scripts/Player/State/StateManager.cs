@@ -8,6 +8,9 @@ public class PlayerStateManager : MonoBehaviour
     public Rigidbody2D myRb;
     public BoxCollider2D groundCollider;
     public LayerMask groundMask;
+
+    [Header("Events")]
+    public GameEvent OnPlayerStateChange;
     // public GameObject playerAnimation;
     [HideInInspector] public Transform rootTransform;
     [HideInInspector] public Animator animator;
@@ -20,6 +23,7 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerJumpingState JumpingState = new();
     public PlayerDyingState DeadState = new();
     public PlayerFallingState FallingState = new();
+    public PlayerWinState WinState = new();
 
 
     // variables
@@ -46,6 +50,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
+        OnPlayerStateChange.Raise(this, state);
     }
 
 

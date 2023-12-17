@@ -170,8 +170,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8773718018211058267}
-  - component: {fileID: 4857958798942274927}
   - component: {fileID: 3129193243189111474}
+  - component: {fileID: 4857958798942274927}
   m_Layer: 0
   m_Name: NormalEnemy
   m_TagString: Untagged
@@ -196,23 +196,6 @@ Transform:
   - {fileID: 5396522281674135920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &4857958798942274927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8560507512703644482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0072d333e351dee45b8af316a9e303c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 10
-  currentHp: 10
-  attackPoints: 1
-  myRb: {fileID: 3129193243189111474}
-  xSpeed: 1
 --- !u!50 &3129193243189111474
 Rigidbody2D:
   serializedVersion: 4
@@ -240,3 +223,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4857958798942274927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560507512703644482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0072d333e351dee45b8af316a9e303c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 10
+  attackPoints: 1
+  OnEnemyDestruction: {fileID: 11400000, guid: 36792f807661cc24896dbea3eeecad23, type: 2}
+  myRb: {fileID: 3129193243189111474}
+  xSpeed: 1

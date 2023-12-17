@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Stats settings")]
     [SerializeField] int maxHp = 3;
-    [SerializeField] int currentHp;
+    [System.NonSerialized] int currentHp;
+
+    [Header("Events")]
+    public GameEvent OnPlayerTakeDamage;
 
     PlayerStateManager stateManager;
     PlayerAnimationController animationHandler;
@@ -18,8 +22,7 @@ public class Player : MonoBehaviour
     }
 
 
-    [Header("Events")]
-    public GameEvent OnPlayerTakeDamage;
+
 
     public void TakeDamage(int value = 1)
     {
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
 
         currentHp -= value;
         OnPlayerTakeDamage.Raise(this, value);
+
         if (currentHp <= 0)
             OnHpZero();
         else
