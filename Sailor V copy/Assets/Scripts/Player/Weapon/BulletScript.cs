@@ -6,12 +6,19 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    [Header("Components")]
+    [SerializeField] Rigidbody2D rb;
+
+    public Sound sfx_shoot;
+
+    [Header("Stats settings")]
     [SerializeField] float speed = 5f;
     [SerializeField] int damage = 5;
-    [SerializeField] Rigidbody2D rb;
-    void Start()
-    {
-    }
+    // void Start()
+    // {
+    //     // sfx_shoot.RegisterAudio(this.gameObject);
+    // }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -28,7 +35,6 @@ public class BulletScript : MonoBehaviour
             enemy.Damage(damage);
             Destroy(gameObject);
         }
-
     }
 
     private void OnBecameInvisible()

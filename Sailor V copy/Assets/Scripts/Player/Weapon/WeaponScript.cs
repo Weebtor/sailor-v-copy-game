@@ -38,6 +38,7 @@ public class WeaponScript : MonoBehaviour
         {
             weaponCooldown.StartCooldown();
             playerAnimationHandler.HandleShootAnimation();
+            AudioManager.Instance.PlaySfx("shoot");
             SpawnBullet();
         }
     }

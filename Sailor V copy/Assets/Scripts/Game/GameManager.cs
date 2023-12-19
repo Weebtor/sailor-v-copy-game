@@ -1,15 +1,23 @@
 using System.Collections;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
-public class GameController : MonoBehaviour
+
+public class GameManager : MonoBehaviour
 {
     [Header("Scene components")]
     [SerializeField] PlayerStateManager playerStateManager;
+
     [Header("Stage condition")]
     [System.NonSerialized] bool stageCompleted = false;
+
     [Header("Score")]
     [System.NonSerialized] int score = 0;
+
+    [Header("Events")]
+    public GameState state = GameState.pause;
+
 
 
 
@@ -32,6 +40,18 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         playerStateManager.SwitchState(playerStateManager.WinState);
         Debug.Log("<color=green>Trigger win screen</color>");
+        AudioManager.Instance.PlayMusic("winScreen");
+    }
+
+    void SwitchState(GameState newState)
+    {
+        gameState = newState;
+    }
+    void StartStage()
+    {
+        // yield return new WaitForSeconds(2f);
+        // playerStateManager.SwitchState(playerStateManager.WinState);
+        AudioManager.Instance.PlayMusic("inGame");
     }
 
 
@@ -53,4 +73,10 @@ public class GameController : MonoBehaviour
         IncreaseScore(enemy.scorePoints);
     }
 
+}
+
+
+enum GameState
+{
+    pause
 }
