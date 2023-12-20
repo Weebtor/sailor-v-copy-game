@@ -61,7 +61,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.025695443, y: 0.03426057}
@@ -235,7 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0072d333e351dee45b8af316a9e303c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
   attackPoints: 1
   OnEnemyDestruction: {fileID: 11400000, guid: 36792f807661cc24896dbea3eeecad23, type: 2}
   myRb: {fileID: 3129193243189111474}

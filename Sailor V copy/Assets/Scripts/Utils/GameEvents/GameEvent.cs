@@ -7,23 +7,7 @@ public class GameEvent : ScriptableObject
 {
     public List<GameEventListener> listeners = new();
 
-    //   public void Raise()
-    //     {
-    //         for (int i = 0; i < listeners.Count; i++)
-    //         {
-    //             listeners[i].OnEventRaised(null, null);
-    //         }
-
-    //     }
-    //     public void Raise(Component sender)
-    //     {
-    //         for (int i = 0; i < listeners.Count; i++)
-    //         {
-    //             listeners[i].OnEventRaised(sender, null);
-    //         }
-
-    //     }
-    public void Raise(Component sender, object data = null)
+    public void Raise(Component sender = null, object data = null)
     {
         for (int i = 0; i < listeners.Count; i++)
         {

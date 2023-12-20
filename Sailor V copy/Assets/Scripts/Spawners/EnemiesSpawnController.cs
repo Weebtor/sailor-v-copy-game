@@ -21,8 +21,7 @@ public class EnemiesWaveController : MonoBehaviour
             spawnersArray = GetComponentsInChildren<BaseSpawner>();
     }
 
-    [ContextMenu("Start Wave")]
-    public void StartWave()
+    public void StartWave(Component sender, object data)
     {
         enemiesRemaining = enemiesPerWave;
         StartCoroutine(GenerateWave());

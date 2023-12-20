@@ -40,6 +40,7 @@ public class EnemyBase : MonoBehaviour
         Player player = hitbox.transform.root.GetComponent<Player>();
         if (player)
         {
+            Debug.Log($"<color=red>{attackPoints}</color>");
             player.TakeDamage(attackPoints);
             HandleEnemyDestruction();
         }
