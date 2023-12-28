@@ -17,11 +17,11 @@ public class PlayerIdleState : BaseState
     public override void UpdateState(PlayerStateManager manager)
     {
 
-        if (GameInputManager.instance.JumpJustPressed)
+        if (GameInputManager.Instance.jumpAction.IsPressed())
         {
             manager.SwitchState(manager.JumpingState);
         }
-        else if (GameInputManager.instance.CrouchButtonDown || GameInputManager.instance.CrouchButtonHold)
+        else if (GameInputManager.Instance.crouchAction.IsPressed())
         {
             manager.SwitchState(manager.CrouchingState);
         }

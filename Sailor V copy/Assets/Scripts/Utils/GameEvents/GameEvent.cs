@@ -9,6 +9,7 @@ public class GameEvent : ScriptableObject
 
     public void Raise(Component sender = null, object data = null)
     {
+        // Debug.Log($"<color=pink>Event raised: {sender}, {data}</color>");
         for (int i = 0; i < listeners.Count; i++)
         {
             listeners[i].OnEventRaised(sender, data);

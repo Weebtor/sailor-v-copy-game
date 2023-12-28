@@ -11,10 +11,11 @@ public class EnemiesWaveController : MonoBehaviour
     [Header("Wave controller")]
     [SerializeField] float spawnColldown = 5f;
     [SerializeField] int enemiesPerWave = 5;
-    [SerializeField] int enemiesRemaining;
+    [SerializeField] int enemiesCounter;
 
     [Header("Events")]
     public GameEvent stageCompleted;
+    public GameEvent updateEnemyCounter;
     void Start()
     {
         if (spawnersArray.Length == 0)
@@ -23,7 +24,7 @@ public class EnemiesWaveController : MonoBehaviour
 
     public void StartWave(Component sender, object data)
     {
-        enemiesRemaining = enemiesPerWave;
+        enemiesCounter = enemiesPerWave;
         StartCoroutine(GenerateWave());
     }
 
@@ -43,21 +44,23 @@ public class EnemiesWaveController : MonoBehaviour
     }
 
 
-    public void OnListenerEnemyDestroyed(Component sender, object data)
-    {
-        DecreaseRemainingEnemiesCounter();
-    }
 
     public void DecreaseRemainingEnemiesCounter()
     {
-        Debug.Log("DecreaseRemainingEnemiesCounter");
-        enemiesRemaining -= 1;
-        if (enemiesRemaining == 0)
+        enemiesCounter -= 1;
+        updateEnemyCounter.Raise(this, enemiesCounter);
+        if (enemiesCounter == 0)
         {
             stageCompleted.Raise(this);
         }
     }
 
+
+    // EVENT LISTENERS
+    public void OnListenerEnemyDestroyed(Component sender, object data)
+    {
+        DecreaseRemainingEnemiesCounter();
+    }
 
 
 }

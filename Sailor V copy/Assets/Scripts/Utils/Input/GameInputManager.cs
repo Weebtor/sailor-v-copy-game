@@ -5,67 +5,67 @@ using UnityEngine.InputSystem;
 
 public class GameInputManager : MonoBehaviour
 {
-    public static GameInputManager instance;
+    public static GameInputManager Instance;
     // Start is called before the first frame update
-    public bool JumpJustPressed { get; private set; }
-    public bool ShootJustPressed { get; private set; }
-    public bool CrouchButtonDown { get; private set; }
-    public bool CrouchButtonHold { get; private set; }
-    public bool MenuOpenCloseInput { get; private set; }
-
     private PlayerInput _playerInput;
 
-    private InputAction _jumpAction;
-    private InputAction _crouchAction;
-    private InputAction _shootAction;
-    private InputAction _menuOpenCloseAction;
+    public InputAction jumpAction { get; private set; }
+    public InputAction crouchAction { get; private set; }
+    public InputAction shootAction { get; private set; }
+    public InputAction menuAction { get; private set; }
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         _playerInput = GetComponent<PlayerInput>();
+        Debug.Log($"<color=yellow>{string.Join("\n", Gamepad.all)}</color>");
         SetupInputActions();
+        // _playerInput.SwitchCurrentActionMap()
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        UpdateInputs();
+        // UpdateInputs();
     }
 
     private void SetupInputActions()
     {
-        _jumpAction = _playerInput.actions["Jump"];
-        _crouchAction = _playerInput.actions["Crouch"];
-        _shootAction = _playerInput.actions["Shoot"];
-        _menuOpenCloseAction = _playerInput.actions["MenuOpenClose"];
+        jumpAction = _playerInput.actions["Jump"];
+        crouchAction = _playerInput.actions["Crouch"];
+        shootAction = _playerInput.actions["Shoot"];
+        menuAction = _playerInput.actions["MenuOpenClose"];
     }
 
-    private void UpdateInputs()
-    {
-        JumpJustPressed = _jumpAction.WasPressedThisFrame();
-        ShootJustPressed = _shootAction.WasPressedThisFrame();
-        CrouchButtonDown = _crouchAction.WasPressedThisFrame();
-        CrouchButtonHold = _crouchAction.IsPressed();
+    // private void UpdateInputs()
+    // {
+    //     JumpJustPressed = jumpAction.WasPressedThisFrame();
+    //     ShootJustPressed = shootAction.WasPressedThisFrame();
+    //     CrouchButtonDown = crouchAction.WasPressedThisFrame();
+    //     CrouchButtonHold = crouchAction.IsPressed();
 
-        MenuOpenCloseInput = _menuOpenCloseAction.WasPressedThisFrame();
+    //     MenuOpenCloseDown = menuAction.WasPressedThisFrame();
+    //     // Debug.Log($"JumpJustPressed: {_jumpAction.WasPressedThisFrame()}");
+    //     // Debug.Log($"ShootJustPressed: {_shootAction.WasPressedThisFrame()}");
+    //     Debug.Log($"CrouchButtonDown: {crouchAction.WasPressedThisFrame()}");
+    //     Debug.Log($"CrouchButtonHold: {crouchAction.IsPressed()}");
+    // }
+
+    public void GameplayActionsDisable()
+    {
+        jumpAction.Disable();
+        crouchAction.Disable();
+        shootAction.Disable();
     }
 
-    public void InGameActinsDisable()
+    public void GameplayActionsEnable()
     {
-        _jumpAction.Disable();
-        _crouchAction.Disable();
-        _shootAction.Disable();
-    }
-
-    public void InGameActionsEnable()
-    {
-        _jumpAction.Enable();
-        _crouchAction.Enable();
-        _shootAction.Enable();
+        jumpAction.Enable();
+        crouchAction.Enable();
+        shootAction.Enable();
     }
 }

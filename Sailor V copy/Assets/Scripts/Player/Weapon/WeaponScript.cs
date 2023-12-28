@@ -34,7 +34,10 @@ public class WeaponScript : MonoBehaviour
     void HandleShoot()
     {
 
-        if (GameInputManager.instance.ShootJustPressed && weaponCooldown.IsCoolingDown == false)
+        if (weaponCooldown.IsCoolingDown)
+            return;
+
+        if (GameInputManager.Instance.shootAction.WasPressedThisFrame())
         {
             weaponCooldown.StartCooldown();
             playerAnimationHandler.HandleShootAnimation();

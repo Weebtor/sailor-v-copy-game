@@ -1,38 +1,28 @@
 using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 
 
 
-public class GameManager : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     [Header("Scene components")]
     [SerializeField] PlayerStateManager playerStateManager;
-
-    // [Header("Stage condition")]
-    // [System.NonSerialized] bool stageCompleted = false;
 
     [Header("Score")]
     [System.NonSerialized] int score = 0;
 
     [Header("Events")]
     public GameEvent OnStartStage;
+    public GameEvent OnUpdateScore;
 
-
-
-
-    // public void ResetGame()
-    // {
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    // }
-
-
+    void Start()
+    {
+        StartStage();
+    }
 
     void StageCompleted()
     {
-        // stageCompleted = true;
-        GameInputManager.instance.InGameActinsDisable();
+        GameInputManager.Instance.GameplayActionsDisable();
         StartCoroutine(TriggerStageCompletedScreen());
     }
     IEnumerator TriggerStageCompletedScreen()
@@ -43,32 +33,30 @@ public class GameManager : MonoBehaviour
         Debug.Log("<color=green>Trigger win screen</color>");
         AudioManager.Instance.PlayMusic("victory");
     }
-    [ContextMenu("Play ingame theme")]
+
+    [ContextMenu("Start Game")]
     public void StartStage()
     {
         OnStartStage.Raise(null, null);
         AudioManager.Instance.PlayMusic("ingame");
     }
-
-
     public void IncreaseScore(int value = 1)
     {
         score += value;
-        Debug.Log($"<color=yellow>Score {score}</color>");
-
+        OnUpdateScore.Raise(this, score);
+        // Debug.Log($"<color=yellow>Score {score}</color>");
     }
 
-    // EVENTS
+    // EVENTS LISTENERS
     public void OnListenerStageCompleted(Component sender, object data)
     {
         StageCompleted();
     }
-    public void OnListenerEnemyDestroyed(Component sender, object data)
+    public void OnListenerEnemyDefeated(Component sender, object data)
     {
         var enemy = (EnemyBase)sender;
         IncreaseScore(enemy.scorePoints);
     }
-
 }
 
 public enum GameState

@@ -65,4 +65,5 @@ public class PlayerStateManager : MonoBehaviour
         SwitchState(this.DeadState);
     }
 
+
 }

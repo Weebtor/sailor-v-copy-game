@@ -12,7 +12,7 @@ public class PlayerCrouchingState : BaseState
 
     public override void UpdateState(PlayerStateManager manager)
     {
-        if (GameInputManager.instance.CrouchButtonHold == false)
+        if (GameInputManager.Instance.crouchAction.IsPressed() == false)
         {
             manager.SwitchState(manager.IdleState);
         }

@@ -10,11 +10,13 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] const int MAX_HP = 1;
     [System.NonSerialized] int currentHp;
     [SerializeField] int attackPoints = 1;
-    [Header("Game stats")]
-    public readonly int scorePoints = 1;
+
+    [field: Header("Game values")]
+    [field: SerializeField] public int scorePoints { get; private set; } = 1;
 
     [Header("Events")]
     public GameEvent OnEnemyDestruction;
+    public GameEvent OnEnemyDefeated;
 
     protected virtual void Start()
     {
@@ -22,28 +24,28 @@ public class EnemyBase : MonoBehaviour
     }
 
 
-    public void Damage(int damagePoints)
+    public void TakeDamage(int damagePoints)
     {
         currentHp -= damagePoints;
-        if (currentHp <= 0) OnTakedown();
+        if (currentHp <= 0)
+            Deafeat();
     }
 
-    protected virtual void OnTakedown()
+    protected virtual void Deafeat()
     {
-        Debug.Log("Takedown base");
+        OnEnemyDefeated.Raise(this, null);
         HandleEnemyDestruction();
-
     }
 
-    void OnTriggerEnter2D(Collider2D hitbox)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = hitbox.transform.root.GetComponent<Player>();
-        if (player)
-        {
-            Debug.Log($"<color=red>{attackPoints}</color>");
-            player.TakeDamage(attackPoints);
-            HandleEnemyDestruction();
-        }
+
+        Player player = other.GetComponentInParent<Player>();
+
+        if (player == null) return;
+
+        player.TakeDamage(attackPoints);
+        HandleEnemyDestruction();
 
     }
 

@@ -14,31 +14,36 @@ public class BulletScript : MonoBehaviour
     [Header("Stats settings")]
     [SerializeField] float speed = 5f;
     [SerializeField] int damage = 5;
-    // void Start()
-    // {
-    //     // sfx_shoot.RegisterAudio(this.gameObject);
-    // }
 
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         rb.velocity = transform.right * speed;
     }
 
 
-    private void OnTriggerEnter2D(Collider2D hit)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        var enemy = hit.transform.root.GetComponent<EnemyBase>();
-        if (enemy)
+        int otherLayer = other.gameObject.layer;
+        if (otherLayer == (int)General.Layers.Hurtbox)
         {
-            enemy.Damage(damage);
-            Destroy(gameObject);
+            EnemyBase enemy = other.transform.root.GetComponent<EnemyBase>();
+            if (enemy)
+            {
+                enemy.TakeDamage(damage);
+                HandleDestroy();
+            }
         }
+    }
+
+    void HandleDestroy()
+    {
+        // for object pulling in the future
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
+
 }

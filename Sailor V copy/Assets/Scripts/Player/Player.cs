@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int value = 1)
     {
+        // Debug.Log($"<color=red>Player take damage: {value} </color>");
         if (currentHp <= 0)
             return;
 
@@ -42,5 +43,4 @@ public class Player : MonoBehaviour
     {
         stateManager.SwitchState(stateManager.DeadState);
     }
-
 }

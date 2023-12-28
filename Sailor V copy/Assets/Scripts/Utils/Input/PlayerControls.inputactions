@@ -1,8 +1,8 @@
 {
-    "name": "Controls",
+    "name": "PlayerControls",
     "maps": [
         {
-            "name": "InGame",
+            "name": "Gameplay",
             "id": "50c51166-e9bf-4007-9a72-df8a930733aa",
             "actions": [
                 {
@@ -20,7 +20,7 @@
                     "id": "6e942b85-01b2-40c0-846d-9bee00fc03e3",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -45,44 +45,88 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "9d028210-be7e-461c-896f-f1bc0573b993",
+                    "id": "4c879286-01f9-4aa3-aafa-22eefbb92c67",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "General",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "7155d751-895f-4862-af32-952710d93e35",
-                    "path": "<Keyboard>/s",
+                    "id": "440a5e33-a1cd-49f8-91e9-56b8cc891403",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "General",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b139d2f0-8239-48d9-9dd5-5cb213ed792e",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "General",
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "0de78386-c30e-4b06-8e87-b7d621a21f16",
+                    "id": "0108b3ff-986c-4e78-a03f-76d8cdb3ea68",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "General",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a53897c-a97b-4fae-912a-9cee50016db6",
                     "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "General",
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "31ec0597-1dca-4fb8-8d88-ba63cedcef54",
+                    "id": "fb84f3c0-5dc1-4d77-b96a-86d51e05e454",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "General",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "235704a7-4b70-4387-ba0d-341354c70d6d",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "General",
+                    "action": "MenuOpenClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f8c52cf-80ea-4843-8864-db7d6d683f55",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "General",
                     "action": "MenuOpenClose",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -92,16 +136,21 @@
     ],
     "controlSchemes": [
         {
-            "name": "TestControlScheme",
-            "bindingGroup": "TestControlScheme",
+            "name": "General",
+            "bindingGroup": "General",
             "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
                 {
                     "devicePath": "<Gamepad>",
                     "isOptional": true,
                     "isOR": false
                 },
                 {
-                    "devicePath": "<Keyboard>",
+                    "devicePath": "<HID::BinXin Electronics PS3/PC Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }
