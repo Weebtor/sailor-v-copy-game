@@ -7,20 +7,14 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
-
     void Update()
     {
         if (GameInputManager.Instance.menuAction.WasPressedThisFrame() == true)
         {
-            Debug.Log("Pressed pause");
             if (GameIsPaused)
-            {
                 Resume();
-            }
             else
-            {
                 Pause();
-            }
         }
     }
 

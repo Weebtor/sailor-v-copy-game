@@ -5,7 +5,7 @@ public class PlayerIdleState : BaseState
     Rigidbody2D rigidbody;
     BoxCollider2D groundCollider;
     ContactFilter2D groundFilter;
-    public override void EnterState(PlayerStateManager manager)
+    public override void EnterState(PlayerStateController manager)
     {
         rigidbody = manager.myRb;
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
@@ -14,7 +14,7 @@ public class PlayerIdleState : BaseState
 
         manager.animationHandler.SwitchState(PlayerAnimationName.IDLE);
     }
-    public override void UpdateState(PlayerStateManager manager)
+    public override void UpdateState(PlayerStateController manager)
     {
 
         if (GameInputManager.Instance.jumpAction.IsPressed())
@@ -28,7 +28,7 @@ public class PlayerIdleState : BaseState
 
     }
 
-    void HandleGroundSnap(PlayerStateManager manager)
+    void HandleGroundSnap(PlayerStateController manager)
     {
         RaycastHit2D[] groundCastBuffer = new RaycastHit2D[1];
         int hit = groundCollider.Cast(Vector2.down, groundFilter, groundCastBuffer, 0f);

@@ -8,7 +8,7 @@ public class PlayerDyingState : BaseState
     Vector2 groundSurface;
     Transform playerTransform;
 
-    public override void EnterState(PlayerStateManager manager)
+    public override void EnterState(PlayerStateController manager)
     {
 
         rigidbody = manager.myRb;
@@ -20,7 +20,7 @@ public class PlayerDyingState : BaseState
         groundSurface = GetGroundSurface();
     }
 
-    public override void UpdateState(PlayerStateManager manager) { }
+    public override void UpdateState(PlayerStateController manager) { }
 
 
     Vector2 GetGroundSurface()
