@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject dialogueBox;
 
-    DialogueObject currentDialogue;
+    // DialogueObject currentDialogue;
 
 
     void Awake()
@@ -24,16 +24,16 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    public void StartDialogue(DialogueObject dialogue)
-    {
-        currentDialogue = dialogue;
-        dialogueBox.SetActive(true);
-        // UpdateDialogueBox(dialogue.dialogueLines[0]);
-        // foreach (DialogueData line in dialogue.dialogueLines)
-        // {
-        //     Debug.Log($"<color=green>[{line.character.displayName}]</color>: {line.dialogueText}");
-        // }
-    }
+    // public void StartDialogue(DialogueObject dialogue)
+    // {
+    //     currentDialogue = dialogue;
+    //     dialogueBox.SetActive(true);
+    //     // UpdateDialogueBox(dialogue.dialogueLines[0]);
+    //     // foreach (DialogueData line in dialogue.dialogueLines)
+    //     // {
+    //     //     Debug.Log($"<color=green>[{line.character.displayName}]</color>: {line.dialogueText}");
+    //     // }
+    // }
 
     // void UpdateDialogueBox(DialogueData line)
     // {

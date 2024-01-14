@@ -15,12 +15,12 @@ public class GameController : MonoBehaviour
     public GameEvent OnStartStage;
     public GameEvent OnUpdateScore;
 
-    [Header("Dialogue")]
-    public DialogueObject testDialogue;
+    // [Header("Dialogue")]
+    // public DialogueObject testDialogue;
     void Start()
     {
-        DialogueManager.Instance.StartDialogue(testDialogue);
-        // StartStage();
+        // DialogueManager.Instance.StartDialogue(testDialogue);
+        StartStage();
     }
 
     void StageCompleted()
