@@ -3260,7 +3260,7 @@ MonoBehaviour:
   playerStateManager: {fileID: 1102664586}
   OnStartStage: {fileID: 11400000, guid: b04f839a8766a4040b99f35987fa0cb9, type: 2}
   OnUpdateScore: {fileID: 11400000, guid: d2abecb5d4b4b184b93bd17c3b92e81c, type: 2}
-  testDialogue: {fileID: 11400000, guid: cb98d576316723d448617f3b2bb0ac0c, type: 2}
+  testDialogue: {fileID: 0}
 --- !u!114 &1384546061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4239,7 +4239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1968807148
 RectTransform:
   m_ObjectHideFlags: 0

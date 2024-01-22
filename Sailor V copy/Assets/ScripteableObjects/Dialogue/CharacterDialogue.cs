@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Dialogue/Character")]
-public class DialogueCharacter : ScriptableObject
+[CreateAssetMenu(fileName = "New Character Dialogue", menuName = "Dialogue/Character Dialogue")]
+public class CharacterDialogue : ScriptableObject
 {
     public string displayName;
     public Sprite sprite;

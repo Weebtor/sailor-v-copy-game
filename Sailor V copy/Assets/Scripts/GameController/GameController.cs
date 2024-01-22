@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+
     [Header("Scene components")]
     [SerializeField] PlayerStateController playerStateManager;
 
@@ -16,7 +17,8 @@ public class GameController : MonoBehaviour
     public GameEvent OnUpdateScore;
 
     [Header("Dialogue")]
-    public DialogueObject testDialogue;
+    public DialogueTree testDialogue;
+
     void Start()
     {
         DialogueManager.Instance.StartDialogue(testDialogue);
