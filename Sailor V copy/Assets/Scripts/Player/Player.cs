@@ -11,13 +11,13 @@ public class Player : MonoBehaviour
     [Header("Events")]
     public GameEvent OnPlayerTakeDamage;
 
-    PlayerStateManager stateManager;
+    PlayerStateController stateManager;
     PlayerAnimationController animationHandler;
 
     void Start()
     {
         currentHp = maxHp;
-        stateManager = gameObject.GetComponentInChildren<PlayerStateManager>();
+        stateManager = gameObject.GetComponentInChildren<PlayerStateController>();
         animationHandler = gameObject.GetComponentInChildren<PlayerAnimationController>();
     }
 

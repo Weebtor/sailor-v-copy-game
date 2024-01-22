@@ -25,6 +25,7 @@ public class EnemiesWaveController : MonoBehaviour
     public void StartWave(Component sender, object data)
     {
         enemiesCounter = enemiesPerWave;
+        updateEnemyCounter.Raise(this, enemiesCounter);
         StartCoroutine(GenerateWave());
     }
 

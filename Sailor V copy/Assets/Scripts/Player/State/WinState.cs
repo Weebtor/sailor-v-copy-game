@@ -1,11 +1,11 @@
 public class PlayerWinState : BaseState
 {
-    public override void EnterState(PlayerStateManager manager)
+    public override void EnterState(PlayerStateController manager)
     {
         manager.animationHandler.SwitchState(PlayerAnimationName.WIN);
     }
 
-    public override void UpdateState(PlayerStateManager manager)
+    public override void UpdateState(PlayerStateController manager)
     {
     }
 }
