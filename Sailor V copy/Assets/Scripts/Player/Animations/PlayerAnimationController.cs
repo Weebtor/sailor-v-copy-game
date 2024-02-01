@@ -12,7 +12,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] float flashTime = 0.125f;
 
     Material material;
-    PlayerStateManager stateManager;
+    PlayerStateController stateManager;
     Animator animator;
     PlayerAnimationLayer currentLayer = PlayerAnimationLayer.Normal;
     string currentAnimation = PlayerAnimationName.IDLE;
@@ -20,7 +20,7 @@ public class PlayerAnimationController : MonoBehaviour
     void Start()
     {
         var parent = transform.root;
-        stateManager = parent.GetComponentInChildren<PlayerStateManager>();
+        stateManager = parent.GetComponentInChildren<PlayerStateController>();
         animator = GetComponent<Animator>();
         material = GetComponent<SpriteRenderer>().material;
         material.SetColor("_FlashColor", flashColor);

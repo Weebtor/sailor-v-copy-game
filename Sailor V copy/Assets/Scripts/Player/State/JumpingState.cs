@@ -5,7 +5,7 @@ public class PlayerJumpingState : BaseState
     Rigidbody2D rigidbody;
     bool IsFalling => rigidbody.velocity.y <= 0;
 
-    public override void EnterState(PlayerStateManager manager)
+    public override void EnterState(PlayerStateController manager)
     {
         rigidbody = manager.myRb;
         float initialVerticalVelocity = Mathf.Sqrt(manager.JumpHeight * -2 * Physics2D.gravity.y * manager.GravityScale);
@@ -13,7 +13,7 @@ public class PlayerJumpingState : BaseState
 
         manager.animationHandler.SwitchState(PlayerAnimationName.JUMPING);
     }
-    public override void UpdateState(PlayerStateManager manager)
+    public override void UpdateState(PlayerStateController manager)
     {
         float verticalVelocity = rigidbody.velocity.y + (manager.GravityScale * Physics2D.gravity.y * Time.deltaTime);
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, verticalVelocity);

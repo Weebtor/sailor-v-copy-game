@@ -10,7 +10,7 @@ public class PlayerFallingState : BaseState
 
     private RaycastHit2D[] groundCastBuffer = new RaycastHit2D[1];
 
-    public override void EnterState(PlayerStateManager manager)
+    public override void EnterState(PlayerStateController manager)
     {
         rigidbody = manager.myRb;
         groundCollider = manager.groundCollider;
@@ -18,7 +18,7 @@ public class PlayerFallingState : BaseState
         manager.animationHandler.SwitchState(PlayerAnimationName.FALLING);
     }
 
-    public override void UpdateState(PlayerStateManager manager)
+    public override void UpdateState(PlayerStateController manager)
     {
         float verticalVelocity = rigidbody.velocity.y + (manager.GravityScale * Physics2D.gravity.y * Time.deltaTime);
 
