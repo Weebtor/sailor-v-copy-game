@@ -13,7 +13,7 @@ public class BulletScript : MonoBehaviour
 
     [Header("Stats settings")]
     [SerializeField] float speed = 5f;
-    [SerializeField] int damage = 5;
+    [SerializeField] StatsSystem stats;
 
     void FixedUpdate()
     {
@@ -23,13 +23,13 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        int otherLayer = other.gameObject.layer;
-        if (otherLayer == (int)General.Layers.Hurtbox)
+        int parentLayer = other.transform.parent.gameObject.layer;
+        if (parentLayer == (int)General.Layers.Hurtbox)
         {
-            EnemyBase enemy = other.transform.root.GetComponent<EnemyBase>();
+            BatEnemy enemy = other.transform.root.GetComponent<BatEnemy>();
             if (enemy)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(stats.AttackPoints);
                 HandleDestroy();
             }
         }
@@ -37,7 +37,6 @@ public class BulletScript : MonoBehaviour
 
     void HandleDestroy()
     {
-        // for object pulling in the future
         Destroy(gameObject);
     }
 

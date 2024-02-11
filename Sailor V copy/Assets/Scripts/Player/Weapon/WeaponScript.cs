@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponScript : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class WeaponScript : MonoBehaviour
     PlayerStateController playerState;
     // Animator playerAnimator;
     PlayerAnimationController playerAnimationHandler;
+
+    InputAction ShootAction => GameInputManager.Instance.PlayerInputs.actions["Shoot"];
+
 
     void Start()
     {
@@ -36,7 +40,7 @@ public class WeaponScript : MonoBehaviour
         if (weaponCooldown.IsCoolingDown)
             return;
 
-        if (GameInputManager.Instance.shootAction.WasPressedThisFrame())
+        if (ShootAction.WasPressedThisFrame())
         {
             weaponCooldown.StartCooldown();
             playerAnimationHandler.HandleShootAnimation();

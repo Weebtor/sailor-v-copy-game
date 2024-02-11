@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 56094ee938086fd4abebb96868527a03
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OnEnemyOffScreen: {fileID: 11400000, guid: 23db9d9eb578c8743a045251870e85cd, type: 2}
+  - OnEnemyDestruction: {fileID: 11400000, guid: 36792f807661cc24896dbea3eeecad23, type: 2}
+  - OnEnemyDefeated: {fileID: 11400000, guid: 6f6a81f6ffa36fc46b038bd01c253113, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

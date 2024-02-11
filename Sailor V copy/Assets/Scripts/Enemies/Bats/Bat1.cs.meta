@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0072d333e351dee45b8af316a9e303c6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OnEnemyDestruction: {fileID: 11400000, guid: 36792f807661cc24896dbea3eeecad23, type: 2}
+  - OnEnemyDefeated: {fileID: 11400000, guid: 6f6a81f6ffa36fc46b038bd01c253113, type: 2}
+  - myRb: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

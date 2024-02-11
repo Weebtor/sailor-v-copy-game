@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 0cab0c9fb4c515c4f8d71ad42c7709f9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pf_healthRepresentation: {fileID: 7892643966243594434, guid: 401c2cc2b02c6e14ba5e0d1e15097d2a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

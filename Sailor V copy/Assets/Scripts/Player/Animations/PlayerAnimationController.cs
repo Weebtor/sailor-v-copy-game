@@ -11,11 +11,12 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] Color flashColor = Color.white;
     [SerializeField] float flashTime = 0.125f;
 
-    Material material;
     PlayerStateController stateManager;
-    Animator animator;
     PlayerAnimationLayer currentLayer = PlayerAnimationLayer.Normal;
     string currentAnimation = PlayerAnimationName.IDLE;
+
+    Material material;
+    public Animator animator;
 
     void Start()
     {
@@ -81,6 +82,12 @@ public class PlayerAnimationController : MonoBehaviour
         yield return new WaitForSeconds(flashTime);
         material.SetFloat("_FlashValue", 0);
         yield return new WaitForSeconds(flashTime);
+    }
 
+    public void OnAnimationDying()
+    {
+        SwitchState(PlayerAnimationName.DYING);
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        Time.timeScale = 0;
     }
 }

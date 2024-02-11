@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4348620784475263983}
   - component: {fileID: 934428922020626302}
   m_Layer: 0
-  m_Name: Animation
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,11 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173867112007098215}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.0000002384186, y: -2.0097183e-14, z: 0.00000008429376, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 3488568961743075778}
   - {fileID: 8614278439498821490}
   m_Father: {fileID: 6413600819538942132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -123,6 +124,7 @@ MonoBehaviour:
   returnToNormalAnimationTime: 1.5
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashTime: 0.2
+  animator: {fileID: 0}
 --- !u!1 &666943804618932885
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ GameObject:
   - component: {fileID: 3488568961743075778}
   - component: {fileID: 5317452431243161686}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: WeaponPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,14 +151,14 @@ Transform:
   m_GameObject: {fileID: 666943804618932885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.584, y: 0.75400007, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.38933334, y: 0.5026667, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4437638253511570462}
   - {fileID: 2476942087723110629}
   - {fileID: 1627205034865975316}
-  m_Father: {fileID: 6413600819538942132}
+  m_Father: {fileID: 2889354051133157476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5317452431243161686
 MonoBehaviour:
@@ -187,9 +189,10 @@ GameObject:
   - component: {fileID: 6413600819538942132}
   - component: {fileID: 5663823286122826854}
   - component: {fileID: 7729771742970302422}
+  - component: {fileID: 5545511056230847422}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,7 +211,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3465334588644116697}
-  - {fileID: 3488568961743075778}
   - {fileID: 2889354051133157476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -251,8 +253,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef73015188e1624095ff32297e798e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 3
-  OnPlayerTakeDamage: {fileID: 11400000, guid: d80f15d8e87371b4a9c43f9c4a21535d, type: 2}
+  OnPlayerHealthChanged: {fileID: 11400000, guid: d80f15d8e87371b4a9c43f9c4a21535d, type: 2}
+  Health:
+    <MaxHp>k__BackingField: 3
+    <CurrentHp>k__BackingField: 0
+--- !u!114 &5545511056230847422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635501195591494595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84d2d46062861b418722ea01a4db10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 23db9d9eb578c8743a045251870e85cd, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7729771742970302422}
+        m_TargetAssemblyTypeName: PlayerHealthController, Assembly-CSharp
+        m_MethodName: OnListenerEnemyOffScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3130413601812271167
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +325,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3130413601812271167}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -439,7 +471,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1871463, y: 0.009084739}
+  m_Offset: {x: -0.12384188, y: 0.009084739}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -450,7 +482,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6257074, y: 0.10022123}
+  m_Size: {x: 0.49909854, y: 0.10022123}
   m_EdgeRadius: 0
 --- !u!114 &6986175995371497930
 MonoBehaviour:
@@ -472,9 +504,9 @@ MonoBehaviour:
   OnPlayerStateChange: {fileID: 11400000, guid: 85d03e7409c38524a87ded2a8fb9250e, type: 2}
   rootTransform: {fileID: 0}
   animator: {fileID: 0}
-  animationHandler: {fileID: 0}
+  animationController: {fileID: 0}
   <GravityScale>k__BackingField: 1
-  <JumpHeight>k__BackingField: 1
+  <JumpHeight>k__BackingField: 0.8
 --- !u!1 &5272916341384898021
 GameObject:
   m_ObjectHideFlags: 0

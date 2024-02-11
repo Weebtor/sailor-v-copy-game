@@ -11,7 +11,7 @@ public class PlayerJumpingState : BaseState
         float initialVerticalVelocity = Mathf.Sqrt(manager.JumpHeight * -2 * Physics2D.gravity.y * manager.GravityScale);
         rigidbody.velocity = new Vector2(rigidbody.velocity.y, initialVerticalVelocity);
 
-        manager.animationHandler.SwitchState(PlayerAnimationName.JUMPING);
+        manager.animationController.SwitchState(PlayerAnimationName.JUMPING);
     }
     public override void UpdateState(PlayerStateController manager)
     {

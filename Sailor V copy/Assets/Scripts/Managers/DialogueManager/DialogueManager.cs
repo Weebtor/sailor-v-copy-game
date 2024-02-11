@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
     {
         // currentDialogue = dialogue;
         dialogueBox.SetActive(true);
-        UpdateDialogueBox(dialogue.startItem);
+        // UpdateDialogueBox(dialogue.startItem);
         // UpdateDialogueBox(dialogue.dialogueLines[0
         // foreach (DialogueData line in dialogue.dialogueLines)
         // {

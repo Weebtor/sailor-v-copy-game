@@ -16,18 +16,15 @@ public class GameController : MonoBehaviour
     public GameEvent OnStartStage;
     public GameEvent OnUpdateScore;
 
-    [Header("Dialogue")]
-    public DialogueTree testDialogue;
-
     void Start()
     {
-        DialogueManager.Instance.StartDialogue(testDialogue);
-        // StartStage();
+        // DialogueManager.Instance.StartDialogue(testDialogue);
+        StartStage();
     }
 
     void StageCompleted()
     {
-        GameInputManager.Instance.GameplayActionsDisable();
+        GameInputManager.Instance.EnableUi();
         StartCoroutine(TriggerStageCompletedScreen());
     }
     IEnumerator TriggerStageCompletedScreen()
@@ -59,8 +56,8 @@ public class GameController : MonoBehaviour
     }
     public void OnListenerEnemyDefeated(Component sender, object data)
     {
-        var enemy = (EnemyBase)sender;
-        IncreaseScore(enemy.scorePoints);
+        var enemy = (BatEnemy)sender;
+        IncreaseScore(enemy.ScorePoints);
     }
 }
 
