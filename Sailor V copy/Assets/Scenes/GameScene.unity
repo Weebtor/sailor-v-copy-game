@@ -3813,7 +3813,7 @@ GameObject:
   - component: {fileID: 1848977568}
   - component: {fileID: 1848977569}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: PixelCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3854,10 +3854,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.27160493
-    y: 0.18604651
-    width: 0.45584044
-    height: 0.627907
+    x: 0.054680258
+    y: 0.017857144
+    width: 0.8897127
+    height: 0.96428573
   near clip plane: 0
   far clip plane: 10000
   field of view: 115
@@ -3971,7 +3971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964072806}
   m_Layer: 0
-  m_Name: MANAGERS
+  m_Name: SingletonManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
