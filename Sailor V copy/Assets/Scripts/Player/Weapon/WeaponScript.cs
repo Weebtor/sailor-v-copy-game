@@ -16,7 +16,6 @@ public class WeaponScript : MonoBehaviour
     [SerializeField] CoolDown weaponCooldown;
 
     PlayerStateController playerState;
-    // Animator playerAnimator;
     PlayerAnimationController playerAnimationHandler;
 
     InputAction ShootAction => GameInputManager.Instance.PlayerInputs.actions["Shoot"];

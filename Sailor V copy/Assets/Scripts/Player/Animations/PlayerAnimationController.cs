@@ -42,7 +42,6 @@ public class PlayerAnimationController : MonoBehaviour
         animator.Play(newAnimation);
         currentAnimation = newAnimation;
     }
-
     public void SetPostionToGround()
     {
         stateManager.DeadState.SetPositionOnKO();
@@ -70,9 +69,9 @@ public class PlayerAnimationController : MonoBehaviour
     // flash damage
     public void TakeDamageAnimation()
     {
-        StartCoroutine(DagemeFlash());
+        StartCoroutine(DamageFlash());
     }
-    IEnumerator DagemeFlash()
+    IEnumerator DamageFlash()
     {
         material.SetFloat("_FlashValue", 1);
         yield return new WaitForSeconds(flashTime);

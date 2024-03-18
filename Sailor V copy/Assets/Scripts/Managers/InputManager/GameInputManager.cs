@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameInputManager : MonoBehaviour
 {
+    [Header("Input system")]
     public static GameInputManager Instance;
     public PlayerInput PlayerInputs { get; private set; }
 
@@ -18,13 +17,10 @@ public class GameInputManager : MonoBehaviour
     }
 
 
-    public void EnableUi()
-    {
-        PlayerInputs.SwitchCurrentActionMap("UI");
-    }
+    public void Deactivate() => PlayerInputs.DeactivateInput();
+    public void Activate() => PlayerInputs.ActivateInput();
+    public void EnableUi() => PlayerInputs.SwitchCurrentActionMap("UI");
+    public void EnablePlayer() => PlayerInputs.SwitchCurrentActionMap("Player");
 
-    public void EnablePlayer()
-    {
-        PlayerInputs.SwitchCurrentActionMap("Player");
-    }
+
 }
